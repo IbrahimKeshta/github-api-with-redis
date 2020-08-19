@@ -1,6 +1,14 @@
-import redisServices from '../services/redis';
+import RedisServices from '../services/redis.service';
 
-export default class redisMiddlware extends redisServices {
+/**
+ * @class RedisMiddlware
+ * This is the middleware that chech is the requested data available
+ * in cache it will be returned if not it pass next() to continue the request
+ * and fetch data to be stored in redis
+ * @method getData(request,response,next)
+ * it will be used as a middleware it have the logic of retrive data
+ */
+export default class RedisMiddlware extends RedisServices {
 
     getData = (req, res, next) => {
         this.redisClient.on("error", () => {

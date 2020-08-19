@@ -1,0 +1,369 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "tradeling",
+    "contact": {}
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/search": {
+      "post": {
+        "description": "Search in github API for users, repository and issue",
+        "summary": "search",
+        "tags": [
+          "API"
+        ],
+        "operationId": "search",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/searchrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/search-users"
+            },
+            "examples": {
+              "application/json": {
+                "total_count": 1,
+                "incomplete_results": false,
+                "items": [
+                  {
+                    "login": "IbrahimKeshta",
+                    "id": 21046554,
+                    "node_id": "MDQ6VXNlcjIxMDQ2NTU0",
+                    "avatar_url": "https://avatars0.githubusercontent.com/u/21046554?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/IbrahimKeshta",
+                    "html_url": "https://github.com/IbrahimKeshta",
+                    "followers_url": "https://api.github.com/users/IbrahimKeshta/followers",
+                    "following_url": "https://api.github.com/users/IbrahimKeshta/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/IbrahimKeshta/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/IbrahimKeshta/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/IbrahimKeshta/subscriptions",
+                    "organizations_url": "https://api.github.com/users/IbrahimKeshta/orgs",
+                    "repos_url": "https://api.github.com/users/IbrahimKeshta/repos",
+                    "events_url": "https://api.github.com/users/IbrahimKeshta/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/IbrahimKeshta/received_events",
+                    "type": "User",
+                    "site_admin": false,
+                    "name": "Ibrahim Keshta",
+                    "company": null,
+                    "blog": "",
+                    "location": "Egypt , Mansoura",
+                    "email": null,
+                    "hireable": null,
+                    "bio": "Node JS developer ",
+                    "twitter_username": null,
+                    "public_repos": 9,
+                    "public_gists": 0,
+                    "followers": 3,
+                    "following": 2,
+                    "created_at": "2016-08-15T21:52:50Z",
+                    "updated_at": "2020-08-19T12:51:23Z",
+                    "private_gists": 0,
+                    "total_private_repos": 5,
+                    "owned_private_repos": 5,
+                    "disk_usage": 941,
+                    "collaborators": 2,
+                    "two_factor_authentication": false,
+                    "plan": {
+                        "name": "free",
+                        "space": 976562499,
+                        "collaborators": 0,
+                        "private_repos": 10000
+                    }
+                }
+                ]
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "1033"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"409-sEJoV+pGplDFBEB/bpnaKSvgWUg\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 Aug 2020 19:12:28 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/textvalidation"
+            },
+            "examples": {
+              "application/json": {
+                "message": "\"text\" length must be at least 3 characters long",
+                "error": {
+                  "_original": {
+                    "type": "users",
+                    "text": "ex"
+                  },
+                  "details": [
+                    {
+                      "message": "\"text\" length must be at least 3 characters long",
+                      "path": [
+                        "text"
+                      ],
+                      "type": "string.min",
+                      "context": {
+                        "limit": 3,
+                        "value": "ex",
+                        "label": "text",
+                        "key": "text"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clear-cache": {
+      "post": {
+        "description": "this route will clear all stored data in redis",
+        "summary": "clear cache",
+        "tags": [
+          "API"
+        ],
+        "operationId": "clearcache",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/clearcache"
+            },
+            "examples": {
+              "application/json": {
+                "status": "OK"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "15"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"f-v/Y1JusChTxrQUzPtNAKycooOTA\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 18 Aug 2020 19:14:15 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "searchrequest": {
+      "title": "searchrequest",
+      "example": {
+        "type": "users",
+        "text": "Ibrahim Keshta"
+      },
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["users", "repos", "issues"]
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "text"
+      ]
+    },
+    "textvalidation": {
+      "title": "textvalidation",
+      "example": {
+        "message": "\"text\" length must be at least 3 characters long",
+        "error": {
+          "_original": {
+            "type": "users",
+            "text": "ex"
+          },
+          "details": [
+            {
+              "message": "\"text\" length must be at least 3 characters long",
+              "path": [
+                "text"
+              ],
+              "type": "string.min",
+              "context": {
+                "limit": 3,
+                "value": "ex",
+                "label": "text",
+                "key": "text"
+              }
+            }
+          ]
+        }
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "error": {
+          "$ref": "#/definitions/Error"
+        }
+      },
+      "required": [
+        "message",
+        "error"
+      ]
+    },
+    "search-users": {
+      "title": "search-users",
+      "example": {
+        "total_count": 1,
+        "incomplete_results": false,
+        "items": [
+            {
+              "login": "IbrahimKeshta",
+              "id": 21046554,
+              "node_id": "MDQ6VXNlcjIxMDQ2NTU0",
+              "avatar_url": "https://avatars0.githubusercontent.com/u/21046554?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/IbrahimKeshta",
+              "html_url": "https://github.com/IbrahimKeshta",
+              "followers_url": "https://api.github.com/users/IbrahimKeshta/followers",
+              "following_url": "https://api.github.com/users/IbrahimKeshta/following{/other_user}",
+              "gists_url": "https://api.github.com/users/IbrahimKeshta/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/IbrahimKeshta/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/IbrahimKeshta/subscriptions",
+              "organizations_url": "https://api.github.com/users/IbrahimKeshta/orgs",
+              "repos_url": "https://api.github.com/users/IbrahimKeshta/repos",
+              "events_url": "https://api.github.com/users/IbrahimKeshta/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/IbrahimKeshta/received_events",
+              "type": "User",
+              "site_admin": false,
+              "name": "Ibrahim Keshta",
+              "company": null,
+              "blog": "",
+              "location": "Egypt , Mansoura",
+              "email": null,
+              "hireable": null,
+              "bio": "Node JS developer ",
+              "twitter_username": null,
+              "public_repos": 9,
+              "public_gists": 0,
+              "followers": 3,
+              "following": 2,
+              "created_at": "2016-08-15T21:52:50Z",
+              "updated_at": "2020-08-19T12:51:23Z",
+              "private_gists": 0,
+              "total_private_repos": 5,
+              "owned_private_repos": 5,
+              "disk_usage": 941,
+              "collaborators": 2,
+              "two_factor_authentication": false,
+              "plan": {
+                  "name": "free",
+                  "space": 976562499,
+                  "collaborators": 0,
+                  "private_repos": 10000
+              }
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "total_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "incomplete_results": {
+          "type": "boolean"
+        },
+        "items": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "total_count",
+        "incomplete_results",
+        "items"
+      ]
+    },
+    "clearcache": {
+      "title": "clearcache",
+      "example": {
+        "status": "OK"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "API",
+      "description": ""
+    }
+  ]
+}
