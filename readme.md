@@ -52,7 +52,7 @@ Want an API Documentation? YAY! There is a documentation using [Swagger]
 
 - Open your browser and you can find it with URL {DOMAIN}/api-docs
 
-**EX:** if project runs in the default port 3000 localhost:3000/api-docs
+**EX:** if project runs on the default port 3000 localhost:3000/api-docs
 
 and we are done. 😄
 
