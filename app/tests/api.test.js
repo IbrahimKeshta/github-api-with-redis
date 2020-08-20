@@ -1,5 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config()
 import app from '../../app';
 import supertest from 'supertest';
 const request = supertest(app)

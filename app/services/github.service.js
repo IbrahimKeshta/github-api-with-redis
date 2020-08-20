@@ -29,7 +29,6 @@ export default class GithubServices {
      async getUsers(text) {
         try {
             let users = await axios.get(`${process.env.GITHUB_API_URL}/search/users?q=${text.trim()}`,this._headers)
-            console.log(users.headers);
             users.data.items = await Promise.all(users.data.items.map(async element => {
                 return (await axios.get(element.url,this._headers)).data
               

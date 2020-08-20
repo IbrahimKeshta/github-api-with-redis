@@ -17,7 +17,6 @@ export default class RedisController extends RedisServices {
            let data = await super.flushData();
            return res.status(200).json({status:data});
         } catch (e) {
-            console.log("error", e);
             return res.status(e.status || 400).json({message: "There's an error deleting data from cache", error: e.message})
         }
     }
